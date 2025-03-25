@@ -64,5 +64,5 @@ services:
       - anthias-data:/data:ro
 
 volumes:
-    anthias-data:
-    redis-data:
+  anthias-data:
+  redis-data:

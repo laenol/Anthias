@@ -3,14 +3,14 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag to be used for the release'
+        description: "Tag to be used for the release"
         required: true
         type: string
       commit:
-        description: 'Commit or branch name'
+        description: "Commit or branch name"
         required: false
         type: string
-        default: 'master'
+        default: "master"
 
 jobs:
   generate-openapi-schema:
@@ -24,7 +24,7 @@ jobs:
   balena-build-images:
     strategy:
       matrix:
-        board: ['pi1', 'pi2', 'pi3', 'pi4', 'pi5']
+        board: ["pi1", "pi2", "pi3", "pi4", "pi5"]
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -102,7 +102,7 @@ jobs:
             '{
               "name": ("Anthias (" + $BOARD + ")"),
               "description": "Anthias, formerly known as Screenly OSE, is the most popular open source digital signage project in the world.",
-              "icon": "https://raw.githubusercontent.com/Screenly/Anthias/master/static/img/square-dark.svg",
+              "icon": "https://raw.githubusercontent.com/laenol/Anthias/master/static/img/square-dark.svg",
               "website": "https://anthias.screenly.io",
               "extract_size": $IMAGE_SIZE,
               "extract_sha256": $IMAGE_SHA256,
@@ -122,4 +122,4 @@ jobs:
       - name: Attest
         uses: actions/attest-build-provenance@v1
         with:
-          subject-path: '${{ github.workspace }}/*raspberry*.zip'
+          subject-path: "${{ github.workspace }}/*raspberry*.zip"
